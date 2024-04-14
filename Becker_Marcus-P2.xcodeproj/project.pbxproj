@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */; };
+		2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2D2BCB78860069C510 /* Searchbar.swift */; };
+		2C928A302BCB7FF90069C510 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2F2BCB7FF80069C510 /* Leg.swift */; };
+		2C928A322BCB801F0069C510 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A312BCB801F0069C510 /* Spot.swift */; };
 		2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */; };
 		2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515C2BB0C0F100D63104 /* ContentView.swift */; };
 		2CD1515F2BB0C0F100D63104 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515E2BB0C0F100D63104 /* Item.swift */; };
 		2CD151612BB0C0F200D63104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151602BB0C0F200D63104 /* Assets.xcassets */; };
 		2CD151642BB0C0F200D63104 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */; };
 		2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */; };
+		2CD151712BB0D39F00D63104 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD151702BB0D39F00D63104 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAdvisor_Location.swift; sourceTree = "<group>"; };
+		2C928A2D2BCB78860069C510 /* Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchbar.swift; sourceTree = "<group>"; };
+		2C928A2F2BCB7FF80069C510 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		2C928A312BCB801F0069C510 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		2CD151572BB0C0F100D63104 /* Becker_Marcus-P2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Becker_Marcus-P2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Becker_Marcus_P2App.swift; sourceTree = "<group>"; };
 		2CD1515C2BB0C0F100D63104 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -24,6 +33,7 @@
 		2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Becker_Marcus_P2.entitlements; sourceTree = "<group>"; };
 		2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeView.swift; sourceTree = "<group>"; };
+		2CD151702BB0D39F00D63104 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +66,10 @@
 		2CD151592BB0C0F100D63104 /* Becker_Marcus-P2 */ = {
 			isa = PBXGroup;
 			children = (
+				2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */,
 				2CD1516D2BB0C19300D63104 /* Data Models */,
 				2CD1516C2BB0C18900D63104 /* View Models */,
 				2CD1516B2BB0C17200D63104 /* Views */,
-				2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */,
 				2CD1515E2BB0C0F100D63104 /* Item.swift */,
 				2CD151602BB0C0F200D63104 /* Assets.xcassets */,
 				2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */,
@@ -81,6 +91,8 @@
 			children = (
 				2CD1515C2BB0C0F100D63104 /* ContentView.swift */,
 				2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */,
+				2CD151702BB0D39F00D63104 /* MapView.swift */,
+				2C928A2D2BCB78860069C510 /* Searchbar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -95,6 +107,9 @@
 		2CD1516D2BB0C19300D63104 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */,
+				2C928A2F2BCB7FF80069C510 /* Leg.swift */,
+				2C928A312BCB801F0069C510 /* Spot.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -171,7 +186,12 @@
 			files = (
 				2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */,
 				2CD1515F2BB0C0F100D63104 /* Item.swift in Sources */,
+				2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */,
+				2CD151712BB0D39F00D63104 /* MapView.swift in Sources */,
+				2C928A302BCB7FF90069C510 /* Leg.swift in Sources */,
+				2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */,
 				2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */,
+				2C928A322BCB801F0069C510 /* Spot.swift in Sources */,
 				2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,8 @@ struct Becker_Marcus_P2App: App {
 
     var body: some Scene {
         WindowGroup {
+            //PrototypeView()
+            //MapView()
             ContentView()
         }
         .modelContainer(sharedModelContainer)

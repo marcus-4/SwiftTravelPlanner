@@ -10,20 +10,30 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    //@Query private var items: [Item]
+    
+    //@Query private var legs: [Leg]
+    
+    private var legs: [Leg] = [Leg(name: "Rome", home: Spot(name: "rome_hostel")), Leg(name: "Florence", home: Spot(name: "Florence_hostel"))]
+    
+    @State private var selectedLeg: Leg?
+    @State private var selectedSpot: Spot?
+    
+    
     
 
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
+                ForEach(legs) { leg in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text("Leg visiting \(leg.name)")
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text("Home \(leg.home!.name)")
                     }
                 }
-                .onDelete(perform: deleteItems)
+                //.onDelete(perform: deleteItems)
+                //TODO: ensure we have this functionality
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .toolbar {
@@ -38,6 +48,10 @@ struct ContentView: View {
         }
     }
 
+    //MARK: This is duplicate with hildreth's model, this adding should probably happen at the data model level, similar to how he has it
+    private func addItem() {}
+    
+    /*
     private func addItem() {
         withAnimation {
             let newItem = Item(timestamp: Date())
@@ -52,6 +66,7 @@ struct ContentView: View {
             }
         }
     }
+     */
 }
 
 #Preview {

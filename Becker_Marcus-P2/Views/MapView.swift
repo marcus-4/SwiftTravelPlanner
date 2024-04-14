@@ -8,11 +8,28 @@
 import SwiftUI
 import MapKit
 
+@MainActor class LocationsHandler: ObservableObject {
+    
+    static let shared = LocationsHandler()
+    public let manager: CLLocationManager
+
+    init() {
+        self.manager = CLLocationManager()
+        if self.manager.authorizationStatus == .notDetermined {
+            self.manager.requestWhenInUseAuthorization()
+        }
+    }
+}
+
+
+
 struct MapView: View {
+    
+    @ObservedObject var myVM = LocationManager()
     
     @State private var searchResults: [MKMapItem] = []
     
-    @Binding var searchstring: String
+    //@Binding var searchstring: String
     
     var body: some View {
         Map {
@@ -29,7 +46,9 @@ struct MapView: View {
         .safeAreaInset(edge: .bottom) {
                     HStack {
                         Spacer()
-                        Searchbar(searchResults: $searchResults, searchString: $searchstring )
+                        //Searchbar(searchResults: $searchResults, searchString: $searchstring )
+                        //SearchCompleter(locVM: myVM)
+                        //SearchCompleterLabelView(searchResult: myVM.searchResults.first, locVM: myVM)
                         }
                         Spacer()
                     }

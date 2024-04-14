@@ -9,8 +9,8 @@ import SwiftUI
 import MapKit
 
 struct Searchbar: View {
-    //@ObservedObject var locationsHandler = LocationsHandler.shared
-    //@Binding var position: MapCameraPosition
+    @ObservedObject var locationsHandler = LocationsHandler.shared
+    @Binding var position: MapCameraPosition
     var visibleRegion: MKCoordinateRegion?
     @Binding var searchResults: [MKMapItem]
     

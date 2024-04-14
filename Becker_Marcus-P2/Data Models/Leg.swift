@@ -21,10 +21,11 @@ final class Leg: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \Spot.leg)
     var home: Spot?
     
-    init(name: String){
+    init(name: String, home: Spot){
         self.id = UUID()
         self.name = name
         self.spots = []
+        self.home = home
     }
     
     

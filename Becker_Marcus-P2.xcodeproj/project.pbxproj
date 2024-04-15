@@ -19,11 +19,11 @@
 		2C928A3D2BCC451D0069C510 /* DataModel_newItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */; };
 		2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */; };
 		2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515C2BB0C0F100D63104 /* ContentView.swift */; };
-		2CD1515F2BB0C0F100D63104 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515E2BB0C0F100D63104 /* Item.swift */; };
 		2CD151612BB0C0F200D63104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151602BB0C0F200D63104 /* Assets.xcassets */; };
 		2CD151642BB0C0F200D63104 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */; };
 		2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */; };
 		2CD151712BB0D39F00D63104 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD151702BB0D39F00D63104 /* MapView.swift */; };
+		2CDED61E2BCDD2A000C0EB90 /* TempTALoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +42,12 @@
 		2CD151572BB0C0F100D63104 /* Becker_Marcus-P2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Becker_Marcus-P2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Becker_Marcus_P2App.swift; sourceTree = "<group>"; };
 		2CD1515C2BB0C0F100D63104 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2CD1515E2BB0C0F100D63104 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2CD151602BB0C0F200D63104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Becker_Marcus_P2.entitlements; sourceTree = "<group>"; };
 		2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeView.swift; sourceTree = "<group>"; };
 		2CD151702BB0D39F00D63104 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTALoc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,6 @@
 				2CD1516D2BB0C19300D63104 /* Data Models */,
 				2CD1516C2BB0C18900D63104 /* View Models */,
 				2CD1516B2BB0C17200D63104 /* Views */,
-				2CD1515E2BB0C0F100D63104 /* Item.swift */,
 				2CD151602BB0C0F200D63104 /* Assets.xcassets */,
 				2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */,
 				2CD151622BB0C0F200D63104 /* Preview Content */,
@@ -136,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */,
+				2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */,
 				2C928A312BCB801F0069C510 /* Spot.swift */,
 				2C928A3A2BCC431A0069C510 /* DataModel.swift */,
 				2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */,
@@ -215,8 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */,
-				2CD1515F2BB0C0F100D63104 /* Item.swift in Sources */,
 				2C928A342BCC319F0069C510 /* LocationManager.swift in Sources */,
+				2CDED61E2BCDD2A000C0EB90 /* TempTALoc.swift in Sources */,
 				2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */,
 				2C928A3D2BCC451D0069C510 /* DataModel_newItems.swift in Sources */,
 				2C691CF52BCCD0B200DDE217 /* TALocation.swift in Sources */,
@@ -356,8 +356,9 @@
 		2CD151692BB0C0F200D63104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Airplane;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Becker_Marcus-P2/Becker_Marcus_P2.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -367,6 +368,7 @@
 				DEVELOPMENT_TEAM = SNG39HGB7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AdventureHub;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -384,8 +386,9 @@
 		2CD1516A2BB0C0F200D63104 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Airplane;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Becker_Marcus-P2/Becker_Marcus_P2.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -395,6 +398,7 @@
 				DEVELOPMENT_TEAM = SNG39HGB7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AdventureHub;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

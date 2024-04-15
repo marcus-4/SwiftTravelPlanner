@@ -33,6 +33,7 @@ struct ContentView: View {
                 OutlineGroup(dataModel.allSpots, id: \.self, children: \.subSpots) { spot in
                     //TODO: Remove drop-down arrows from children
                     NavigationLink {
+                        ///use detail view instead, since NavigationLink will redraw & flash every time
                         mapView
                         //MapView()
                         
@@ -87,7 +88,7 @@ struct ContentView: View {
 
     private func addItem() {
         
-        appController.dataModel.createSpot(spotTitle: "maintest", parent: (selectedSpot ?? nil), isHome: false, TA_ID: "12345")
+        appController.dataModel.createSpot(spotTitle: "maintest", parent: (selectedSpot ?? nil), isHome: false, TA_ID: "12345", lat: 42.3, lon: 13)
         //appController.dataModel.createLegTest(legTitle: "mainleg", homeTitle: "hostel")
     }
     

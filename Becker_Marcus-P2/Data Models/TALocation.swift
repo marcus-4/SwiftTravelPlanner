@@ -12,34 +12,32 @@
 //
 //   let tALocation = try? JSONDecoder().decode(TALocation.self, from: jsonData)
 
-//TODO: Check if it is okay for me to use this
-
 import Foundation
 
 // MARK: - TALocation
 struct TALocation: Codable {
-    let locationID, name: String
-    let webURL: String
-    let addressObj: AddressObj
-    let ancestors: [Ancestor]
-    let latitude, longitude, timezone: String
-    let writeReview: String
-    let rankingData: RankingData
-    let rating: String
-    let ratingImageURL: String
-    let numReviews: String
-    let reviewRatingCount: [String: String]
-    let subratings: [String: Subrating]
-    let photoCount: String
-    let seeAllPhotos: String
-    let priceLevel: String
-    let amenities: [String]
-    let category: Category
-    let subcategory: [Category]
-    let styles: [String]
-    let neighborhoodInfo: [NeighborhoodInfo]
-    let tripTypes: [Subrating]
-    let awards: [JSONAny]
+    let locationID, name: String?
+    let webURL: String?
+    let addressObj: AddressObj?
+    let ancestors: [Ancestor]?
+    let latitude, longitude, timezone: String?
+    let writeReview: String?
+    let rankingData: RankingData?
+    let rating: String?
+    let ratingImageURL: String?
+    let numReviews: String?
+    let reviewRatingCount: [String: String]?
+    let subratings: [String: Subrating]?
+    let photoCount: String?
+    let seeAllPhotos: String?
+    let priceLevel: String?
+    let amenities: [String]?
+    let category: Category?
+    let subcategory: [Category]?
+    let styles: [String]?
+    let neighborhoodInfo: [NeighborhoodInfo]?
+    let tripTypes: [Subrating]?
+    let awards: [JSONAny]?
 
     enum CodingKeys: String, CodingKey {
         case locationID = "location_id"
@@ -66,8 +64,8 @@ struct TALocation: Codable {
 
 // MARK: - AddressObj
 struct AddressObj: Codable {
-    let street1, street2, city, country: String
-    let postalcode, addressString: String
+    let street1, street2, city, country: String?
+    let postalcode, addressString: String?
 
     enum CodingKeys: String, CodingKey {
         case street1, street2, city, country, postalcode
@@ -77,7 +75,7 @@ struct AddressObj: Codable {
 
 // MARK: - Ancestor
 struct Ancestor: Codable {
-    let level, name, locationID: String
+    let level, name, locationID: String?
 
     enum CodingKeys: String, CodingKey {
         case level, name
@@ -87,7 +85,7 @@ struct Ancestor: Codable {
 
 // MARK: - Category
 struct Category: Codable {
-    let name, localizedName: String
+    let name, localizedName: String?
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -97,7 +95,7 @@ struct Category: Codable {
 
 // MARK: - NeighborhoodInfo
 struct NeighborhoodInfo: Codable {
-    let locationID, name: String
+    let locationID, name: String?
 
     enum CodingKeys: String, CodingKey {
         case locationID = "location_id"
@@ -107,8 +105,8 @@ struct NeighborhoodInfo: Codable {
 
 // MARK: - RankingData
 struct RankingData: Codable {
-    let geoLocationID, rankingString, geoLocationName, rankingOutOf: String
-    let ranking: String
+    let geoLocationID, rankingString, geoLocationName, rankingOutOf: String?
+    let ranking: String?
 
     enum CodingKeys: String, CodingKey {
         case geoLocationID = "geo_location_id"
@@ -121,9 +119,9 @@ struct RankingData: Codable {
 
 // MARK: - Subrating
 struct Subrating: Codable {
-    let name, localizedName: String
+    let name, localizedName: String?
     let ratingImageURL: String?
-    let value: String
+    let value: String?
 
     enum CodingKeys: String, CodingKey {
         case name

@@ -67,7 +67,10 @@ struct MapView: View {
                         Spacer()
                     }
         .onChange(of: searchResults) { withAnimation { position = .automatic } }
-        .onChange(of: spot) { withAnimation { position = spot?.mapPosition ?? .automatic} }
+        .onChange(of: spot) { withAnimation { position = spot?.mapPosition ?? .automatic}
+            print(spot?.latitude)
+            print(spot?.longitude)
+            }
         .mapControls {
                     MapUserLocationButton()
                     MapCompass()

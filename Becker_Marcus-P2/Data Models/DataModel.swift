@@ -48,7 +48,7 @@ class DataModel {
         ///PROTOTYPE VALUES
         
         let leg1: Spot = createLegTest(legTitle: "Rome", homeTitle: "rome_hostel")
-        //let leg2: Spot = createLegTest(legTitle: "Florence", homeTitle: "flo_hostel")
+        let leg2: Spot = createLegTest(legTitle: "Florence", homeTitle: "flo_hostel")
         
         //allSpots = [leg1, leg2]
         //try? modelContext.save()

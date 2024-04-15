@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF22BCC5A0A00DDE217 /* AppController.swift */; };
+		2C691CF52BCCD0B200DDE217 /* TALocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF42BCCD0B100DDE217 /* TALocation.swift */; };
+		2C691CF72BCCD61700DDE217 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF62BCCD61700DDE217 /* APIManager.swift */; };
 		2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */; };
 		2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2D2BCB78860069C510 /* Searchbar.swift */; };
 		2C928A322BCB801F0069C510 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A312BCB801F0069C510 /* Spot.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		2C691CF22BCC5A0A00DDE217 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		2C691CF42BCCD0B100DDE217 /* TALocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TALocation.swift; sourceTree = "<group>"; };
+		2C691CF62BCCD61700DDE217 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAdvisor_Location.swift; sourceTree = "<group>"; };
 		2C928A2D2BCB78860069C510 /* Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchbar.swift; sourceTree = "<group>"; };
 		2C928A312BCB801F0069C510 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
@@ -94,7 +98,6 @@
 				2CD1516C2BB0C18900D63104 /* View Models */,
 				2CD1516B2BB0C17200D63104 /* Views */,
 				2CD1515E2BB0C0F100D63104 /* Item.swift */,
-				2C691CF22BCC5A0A00DDE217 /* AppController.swift */,
 				2CD151602BB0C0F200D63104 /* Assets.xcassets */,
 				2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */,
 				2CD151622BB0C0F200D63104 /* Preview Content */,
@@ -124,6 +127,8 @@
 		2CD1516C2BB0C18900D63104 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C691CF22BCC5A0A00DDE217 /* AppController.swift */,
+				2C691CF62BCCD61700DDE217 /* APIManager.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				2C928A312BCB801F0069C510 /* Spot.swift */,
 				2C928A3A2BCC431A0069C510 /* DataModel.swift */,
 				2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */,
+				2C691CF42BCCD0B100DDE217 /* TALocation.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -213,12 +219,14 @@
 				2C928A342BCC319F0069C510 /* LocationManager.swift in Sources */,
 				2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */,
 				2C928A3D2BCC451D0069C510 /* DataModel_newItems.swift in Sources */,
+				2C691CF52BCCD0B200DDE217 /* TALocation.swift in Sources */,
 				2CD151712BB0D39F00D63104 /* MapView.swift in Sources */,
 				2C928A3B2BCC431A0069C510 /* DataModel.swift in Sources */,
 				2C928A372BCC32B30069C510 /* SearchCompleter.swift in Sources */,
 				2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */,
 				2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */,
 				2C928A322BCB801F0069C510 /* Spot.swift in Sources */,
+				2C691CF72BCCD61700DDE217 /* APIManager.swift in Sources */,
 				2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */,
 				2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */,
 			);

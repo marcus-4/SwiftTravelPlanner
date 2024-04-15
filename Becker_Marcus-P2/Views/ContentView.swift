@@ -23,6 +23,7 @@ struct ContentView: View {
     
     //@State private var selectedLeg: Leg?
     @State private var selectedSpot: Spot?
+    @Bindable var API = TripAdvisor_Location()
     
     
     var body: some View {
@@ -34,13 +35,14 @@ struct ContentView: View {
                 
                     //(selection: $selectedSpot){
                     OutlineGroup(dataModel.allSpots, id: \.self, children: \.subSpots) { spot in
+                        //TODO: Remove drop-down arrows from children
                         //ForEach(leg.spots, id: \.self) { spot in
                         NavigationLink {
                             ///map values
                         } label: {
                             HStack{
                                 //need to be unique images
-                                Image(systemName: "folder.fill")
+                                Image(systemName: "mappin.and.ellipse")
                                 Text("\(spot.name)")
                             }
                         }
@@ -60,6 +62,12 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+                //TODO: Remove this, make automatic
+                ToolbarItem {
+                    Button(action: {apiCall()}) {
+                        Label("Make API Call", systemImage: "tray.and.arrow.down")
+                    }
+                }
             }
         } detail: {
             MapView()
@@ -75,6 +83,11 @@ struct ContentView: View {
     private func addItem(parent: Spot?) {
         //appController.dataModel.createSpot(spotTitle: "maintest", parent: parent, isHome: false)
         //appController.dataModel.createLegTest(legTitle: "mainleg", homeTitle: "hostel")
+    }
+    
+    //TODO: Remove this, make automatic
+    private func apiCall() {
+        API.getLocation()
     }
     
     /*

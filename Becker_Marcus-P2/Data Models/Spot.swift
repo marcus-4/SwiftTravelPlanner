@@ -24,6 +24,15 @@ final class Spot: Identifiable {
         }
     }
     
+    //TODO: Store system Images, calculated property based on status, potentially activity type? 
+    //parent Leg: "map"
+    //home: "bed.double"
+    //default: "mappin.and.ellipse"
+    
+    ///need to store TA Location ID
+    //Should I store longer address string? could at least display City / country
+    
+    
     //var coords: CLLocationCoordinate2D
     
     

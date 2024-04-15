@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "91CE5186-F65F-49B4-831E-F201FE27B528"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BBD103A-7224-4373-A1FD-4E1CDB7093F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Becker_Marcus-P2/Views/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "5BBD103A-7224-4373-A1FD-4E1CDB7093F6 - ca272eae64a378db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in Becker_Marcus_P2.ContentView.body.getter : some"
+                  moduleName = "Becker_Marcus-P2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcus/Desktop/macosdev/Becker_Marcus-P2/Becker_Marcus-P2/Views/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "5BBD103A-7224-4373-A1FD-4E1CDB7093F6 - ca272eae64a3777c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in Becker_Marcus_P2.ContentView.body.getter : some"
+                  moduleName = "Becker_Marcus-P2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcus/Desktop/macosdev/Becker_Marcus-P2/Becker_Marcus-P2/Views/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

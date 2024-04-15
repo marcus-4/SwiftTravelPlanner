@@ -64,7 +64,6 @@
 		2C928A352BCC32910069C510 /* Experiments */ = {
 			isa = PBXGroup;
 			children = (
-				2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */,
 				2C928A332BCC319F0069C510 /* LocationManager.swift */,
 				2C928A362BCC32B30069C510 /* SearchCompleter.swift */,
 			);
@@ -136,6 +135,7 @@
 		2CD1516D2BB0C19300D63104 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */,
 				2C928A312BCB801F0069C510 /* Spot.swift */,
 				2C928A3A2BCC431A0069C510 /* DataModel.swift */,
 				2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */,
@@ -359,10 +359,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Becker_Marcus-P2/Becker_Marcus_P2.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Becker_Marcus-P2/Preview Content\"";
+				DEVELOPMENT_TEAM = SNG39HGB7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -385,10 +387,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Becker_Marcus-P2/Becker_Marcus_P2.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Becker_Marcus-P2/Preview Content\"";
+				DEVELOPMENT_TEAM = SNG39HGB7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

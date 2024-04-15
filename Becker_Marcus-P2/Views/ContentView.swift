@@ -7,49 +7,46 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct ContentView: View {
     //@Environment(\.modelContext) private var modelContext
     @Environment(AppController.self) private var appController: AppController
     
     
-    @Query private var spots: [Spot]
+    //@Query private var spots: [Spot]
     
-    //private var legs: [Leg] = [Leg(name: "Rome", home: Spot(name: "rome_hostel")), Leg(name: "Florence", home: Spot(name: "Florence_hostel"))]
-    //@State private var legs: [Leg] = appController.dataModel.allLegs
-    
+    //@Binding var visableRegion: MKCoordinateRegion?
+    //@State var coordinate: CLLocationCoordinate2D
 
-    
-    
-    //@State private var selectedLeg: Leg?
     @State private var selectedSpot: Spot?
-    @Bindable var API = TripAdvisor_Location()
+    @Bindable var API = TripAdvisor_Location(locationID: "123456")
     
     
     var body: some View {
         @Bindable var dataModel = appController.dataModel
         
+        var mapView = MapView(spot: $selectedSpot)
+        
         NavigationSplitView {
             List(selection: $selectedSpot) {
-                //ForEach(legs) { leg in
-                
-                    //(selection: $selectedSpot){
-                    OutlineGroup(dataModel.allSpots, id: \.self, children: \.subSpots) { spot in
-                        //TODO: Remove drop-down arrows from children
-                        //ForEach(leg.spots, id: \.self) { spot in
-                        NavigationLink {
-                            ///map values
-                        } label: {
-                            HStack{
-                                //need to be unique images
-                                Image(systemName: "mappin.and.ellipse")
-                                Text("\(spot.name)")
-                            }
-                        }
+                OutlineGroup(dataModel.allSpots, id: \.self, children: \.subSpots) { spot in
+                    //TODO: Remove drop-down arrows from children
+                    NavigationLink {
+                        mapView
+                        //MapView()
                         
+                    } label: {
+                        HStack{
+                            //need to be unique images
+                            Image(systemName: "mappin.and.ellipse")
+                            Text("\(spot.name)")
+                        }
                     }
                     
-                    
+                }
+                
+                
                 
                 
                 //.onDelete(perform: deleteItems)
@@ -58,8 +55,13 @@ struct ContentView: View {
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .toolbar {
                 ToolbarItem {
-                    Button(action: {addItem(parent: selectedSpot)}) {
+                    Button(action: {addItem()}) {
                         Label("Add Item", systemImage: "plus")
+                    }
+                }
+                ToolbarItem {
+                    Button(action: {deleteItem()}) {
+                        Label("Delet Item", systemImage: "minus")
                     }
                 }
                 //TODO: Remove this, make automatic
@@ -69,25 +71,38 @@ struct ContentView: View {
                     }
                 }
             }
-        } detail: {
-            MapView()
-        }
-        .onAppear() {
+            } detail: {
+                mapView
+                //MapView()
+            }
+            .onAppear() {
 #if DEBUG
-            try? appController.dataModel.modelContext.delete(model: Spot.self)
+                //try? appController.dataModel.modelContext.delete(model: Spot.self)
+                //appController.dataModel.fetchData()
 #endif
+            }
         }
+    
+        
 
-    }
-
-    private func addItem(parent: Spot?) {
-        //appController.dataModel.createSpot(spotTitle: "maintest", parent: parent, isHome: false)
+    private func addItem() {
+        
+        appController.dataModel.createSpot(spotTitle: "maintest", parent: (selectedSpot ?? nil), isHome: false, TA_ID: "12345")
         //appController.dataModel.createLegTest(legTitle: "mainleg", homeTitle: "hostel")
+    }
+    
+    private func deleteItem() {
+        withAnimation {
+            if selectedSpot != nil {
+                appController.dataModel.deleteSpot(spot: selectedSpot!)
+            }
+            selectedSpot = nil
+        }
     }
     
     //TODO: Remove this, make automatic
     private func apiCall() {
-        API.getLocation()
+        //API.getLocation()
     }
     
     /*

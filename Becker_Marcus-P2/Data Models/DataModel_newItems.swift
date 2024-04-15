@@ -9,21 +9,48 @@ import Foundation
 
 extension DataModel {
     
-    func createLeg(legTitle: String, legHome: Spot) {
+    func createSpot(spotTitle: String, parent: Spot?, isHome: Bool) {
+        
+        let newSpot = Spot(name: spotTitle, parent: parent, isHome: isHome)
+        
+        modelContext.insert(newSpot)
+        
+        if let parent {
+            if parent.subSpots != nil {
+                parent.subSpots?.append(newSpot)
+            } else {
+                parent.subSpots = []
+                parent.subSpots?.append(newSpot)
+            }
+        }
+        
+        
+        fetchData()
+        //try? modelContext.save()
+    }
+    
+    //TODO: find why this is needed with creation functionality, should be temporary
+    //save modelcontext / fetch / view updating
+    func createLegTest(legTitle: String, homeTitle: String) -> Spot {
         //UI textfield to create, popup with map search
         //need to pass maplocation? tripadvisor?
         
-        let newLeg = Leg(name: legTitle, home: legHome)
-        
+        let newLeg = Spot(name: legTitle)
         modelContext.insert(newLeg)
         
-    }
-    
-    func createSpot(spotTitle: String) {
         
-        let newSpot = Spot(name: spotTitle)
+        createSpot(spotTitle: homeTitle, parent: newLeg, isHome: true)
         
-        modelContext.insert(newSpot)
+        
+        createSpot(spotTitle: "activity1", parent: newLeg, isHome: false)
+        createSpot(spotTitle:  "activity2", parent: newLeg, isHome: false)
+        createSpot(spotTitle:  "activity3", parent: newLeg, isHome: false)
+        
+        //try? modelContext.save()
+
+        
+        
+        return newLeg
     }
     
     

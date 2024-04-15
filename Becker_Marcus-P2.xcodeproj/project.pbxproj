@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF22BCC5A0A00DDE217 /* AppController.swift */; };
 		2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */; };
 		2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2D2BCB78860069C510 /* Searchbar.swift */; };
-		2C928A302BCB7FF90069C510 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2F2BCB7FF80069C510 /* Leg.swift */; };
 		2C928A322BCB801F0069C510 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A312BCB801F0069C510 /* Spot.swift */; };
 		2C928A342BCC319F0069C510 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A332BCC319F0069C510 /* LocationManager.swift */; };
 		2C928A372BCC32B30069C510 /* SearchCompleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A362BCC32B30069C510 /* SearchCompleter.swift */; };
@@ -25,9 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C691CF22BCC5A0A00DDE217 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAdvisor_Location.swift; sourceTree = "<group>"; };
 		2C928A2D2BCB78860069C510 /* Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchbar.swift; sourceTree = "<group>"; };
-		2C928A2F2BCB7FF80069C510 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
 		2C928A312BCB801F0069C510 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		2C928A332BCC319F0069C510 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2C928A362BCC32B30069C510 /* SearchCompleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCompleter.swift; sourceTree = "<group>"; };
@@ -72,6 +72,7 @@
 			children = (
 				2C928A392BCC3D700069C510 /* GeneralAPI.playground */,
 				2C928A382BCC3BD70069C510 /* TripadvisorAPI.playground */,
+				2C928A352BCC32910069C510 /* Experiments */,
 				2CD151592BB0C0F100D63104 /* Becker_Marcus-P2 */,
 				2CD151582BB0C0F100D63104 /* Products */,
 			);
@@ -93,6 +94,7 @@
 				2CD1516C2BB0C18900D63104 /* View Models */,
 				2CD1516B2BB0C17200D63104 /* Views */,
 				2CD1515E2BB0C0F100D63104 /* Item.swift */,
+				2C691CF22BCC5A0A00DDE217 /* AppController.swift */,
 				2CD151602BB0C0F200D63104 /* Assets.xcassets */,
 				2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */,
 				2CD151622BB0C0F200D63104 /* Preview Content */,
@@ -115,7 +117,6 @@
 				2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */,
 				2CD151702BB0D39F00D63104 /* MapView.swift */,
 				2C928A2D2BCB78860069C510 /* Searchbar.swift */,
-				2C928A352BCC32910069C510 /* Experiments */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,7 +131,6 @@
 		2CD1516D2BB0C19300D63104 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				2C928A2F2BCB7FF80069C510 /* Leg.swift */,
 				2C928A312BCB801F0069C510 /* Spot.swift */,
 				2C928A3A2BCC431A0069C510 /* DataModel.swift */,
 				2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */,
@@ -216,11 +216,11 @@
 				2CD151712BB0D39F00D63104 /* MapView.swift in Sources */,
 				2C928A3B2BCC431A0069C510 /* DataModel.swift in Sources */,
 				2C928A372BCC32B30069C510 /* SearchCompleter.swift in Sources */,
-				2C928A302BCB7FF90069C510 /* Leg.swift in Sources */,
 				2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */,
 				2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */,
 				2C928A322BCB801F0069C510 /* Spot.swift in Sources */,
 				2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */,
+				2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

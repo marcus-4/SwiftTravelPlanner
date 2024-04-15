@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 import SwiftUI
 import SwiftData
 
@@ -18,9 +16,9 @@ class DataModel {
     
     var modelContext: ModelContext
     
-    var allLegs: [Leg] = []
+    var allSpots: [Spot] = []
     
-    var sortLegsKeyPaths: [KeyPathComparator<Leg>] = [.init(\.name)]
+    var sortSpotsKeyPaths: [KeyPathComparator<Spot>] = [.init(\.name)]
     
     
     @Transient
@@ -28,9 +26,10 @@ class DataModel {
     
     
     init() {
+        
         let sharedModelContainer: ModelContainer = {
             let schema = Schema([
-                Leg.self, Spot.self
+                Spot.self
             ])
             let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -44,19 +43,29 @@ class DataModel {
         container = sharedModelContainer
         
         modelContext = ModelContext(sharedModelContainer)
+        
+        
+        ///PROTOTYPE VALUES
+        
+        let leg1: Spot = createLegTest(legTitle: "Rome", homeTitle: "rome_hostel")
+        let leg2: Spot = createLegTest(legTitle: "Florence", homeTitle: "flo_hostel")
+        
+        //allSpots = [leg1, leg2]
+        try? modelContext.save()
+        
     }
     
     
-    // MARK: - Fetching Data
+    // MARK: - Fetching Data,currently causes my swiftcompile failure
     func fetchData() {
         do {
-            let sortOrder = [SortDescriptor<Leg>(\.name)]
-            //let predicate = #Predicate<Spot>{ $0.isHome == false }
-            let predicate = #Predicate<Leg>
+            let sortOrder = [SortDescriptor<Spot>(\.name)]
+            let predicate = #Predicate<Spot>{ $0.isParent == true }
+            //let predicate = #Predicate<Spot>{true}
             
             let descriptor = FetchDescriptor(predicate: predicate, sortBy: sortOrder)
             
-            allLegs = try modelContext.fetch(descriptor)
+            allSpots = try modelContext.fetch(descriptor)
         } catch {
             print("ERROR: Fetch Failed")
         }

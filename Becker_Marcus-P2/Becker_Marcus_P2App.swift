@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct Becker_Marcus_P2App: App {
+    @State var appController = AppController()
+    
 
     var body: some Scene {
         WindowGroup {
@@ -17,5 +19,6 @@ struct Becker_Marcus_P2App: App {
             //MapView()
             ContentView()
         }
+        .environment(appController)
     }
 }

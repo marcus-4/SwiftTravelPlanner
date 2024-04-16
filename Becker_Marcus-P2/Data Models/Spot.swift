@@ -61,6 +61,7 @@ final class Spot: Identifiable {
     //}
     
     //This is currently unsafe with the optional
+    //MARK: Working to add this functionality to the createSpot function in datamodel
     func getTAInfo() {
         
         ///self.TAInfo = try await TripAdvisor_Location(locationID: TA_ID!).getLocation()

@@ -15,12 +15,12 @@ struct PrototypeView: View {
                 Text("Calendar/Timebar").padding()
                 Text("Leg/Activity List").padding()
             }.frame(minWidth: 200, minHeight: 400).padding()
-            //Text("Main Map").padding().frame(minWidth: 600, minHeight: 800)
+            Text("Main Map").padding().frame(minWidth: 600, minHeight: 800)
             //MapView()
             VStack{
                 Text("Photo Preview").padding()
                 Text("Tripadvisor").padding()
-                Text("ChatGPT???").padding()
+                
             }.frame(minWidth: 200, minHeight: 400).padding()
         }.frame(minWidth: 400, minHeight: 400).padding()
     }

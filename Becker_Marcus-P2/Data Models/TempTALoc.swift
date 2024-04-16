@@ -8,7 +8,7 @@ import Foundation
 
 @Observable
 class TripAdvisor_Location {
-    //TODO: Generalize to pass in ID
+    
     let locationID: String
     
     init(locationID: String) {
@@ -24,14 +24,14 @@ class TripAdvisor_Location {
         var receivedLocation: TALocation?
         
         let request = NSMutableURLRequest(url: NSURL(string: "https://api.content.tripadvisor.com/api/v1/location/\(locationID)/details?key=2AF4CBB1A0984815B81A299C018AB444&language=en&currency=USD")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
         
         let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        let dataTask1 = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             
             if let data = data
             {
@@ -50,11 +50,12 @@ class TripAdvisor_Location {
         })
         
         
-        dataTask.resume()
+        dataTask1.resume()
         return receivedLocation
     }
     
     
 }
+
 
 

@@ -17,7 +17,7 @@ class AppController {
         dataModel = DataModel()
         
         
-        
+        //I don't belive i need or want multiple selection
         //selectionManager = SelectionManager()
         
         //selectionManager.delegate = self

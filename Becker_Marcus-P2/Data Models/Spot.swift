@@ -21,7 +21,6 @@ final class Spot: Identifiable {
     
     var parentSpot: Spot?
     
-    var isHome: Bool
     var isParent: Bool
     
     //TODO: Store system Images, calculated property based on status, potentially activity type? 
@@ -29,23 +28,54 @@ final class Spot: Identifiable {
     //home: "bed.double"
     //default: "mappin.and.ellipse"
     
+    var spotType: String
+    
+    
+    @Transient
+    var iconName: String {
+        switch spotType {
+        case "leg":
+            return "map"
+        case "home":
+            return "bed.double"
+        case "place":
+            return "mappin.and.ellipse"
+        default:
+            return "mappin.and.ellipse"
+        }
+    }
+    
+    
+    
     
     
     //Should I store longer address string? could at least display City / country
     
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
+    var latitude: Double
+    var longitude: Double
     
     
     @Transient
-    var coords: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    var mapItem: MKMapItem {
+        
+        .init(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)))
+        
+        
     }
+    
+    
     
     @Transient
     var mapPosition: MapCameraPosition {
-        .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
+        .item(MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))))
+        
+        ///This doesn't work, but ^^ is too zoomed in
+//        .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), latitudinalMeters: 50,
+//                                         longitudinalMeters: 50))
+        ///A leg should show all spots, so mapPosition should be flexible at the spot level
     }
+        
+    
     
     var TA_ID: String?
     //Needs to be initialized or found via search
@@ -72,10 +102,10 @@ final class Spot: Identifiable {
      
     
     //for spots within a leg
-    init(name: String, parent: Spot?, isHome: Bool, TA_ID: String?, TAInfo: TALocation?, lat: Double, lon: Double){
+    init(name: String, parent: Spot?, sType: String, TA_ID: String?, TAInfo: TALocation?, lat: Double, lon: Double){
         self.id = UUID()
         self.name = name
-        self.isHome = isHome
+        self.spotType = sType
         self.isParent = (parent == nil) ? true : false
         self.parentSpot = parent
         self.TA_ID = TA_ID
@@ -85,8 +115,9 @@ final class Spot: Identifiable {
     }
     
     //for leg/top level
-    convenience init(name: String){
-        self.init(name: name, parent: nil, isHome: false, TA_ID: nil, TAInfo: nil, lat: 50, lon: 20)
+
+    convenience init(name: String, parent: Spot?, sType: String, lat: Double, lon: Double){
+        self.init(name: name, parent: parent, sType: sType, TA_ID: nil, TAInfo: nil, lat: lat, lon: lon)
         
     }
     

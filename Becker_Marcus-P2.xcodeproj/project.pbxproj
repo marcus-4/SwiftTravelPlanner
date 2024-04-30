@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5FF9692BE030FC0075AC2B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5FF9682BE030FC0075AC2B /* MapViewModel.swift */; };
 		2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF22BCC5A0A00DDE217 /* AppController.swift */; };
 		2C691CF52BCCD0B200DDE217 /* TALocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF42BCCD0B100DDE217 /* TALocation.swift */; };
 		2C691CF72BCCD61700DDE217 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C691CF62BCCD61700DDE217 /* APIManager.swift */; };
 		2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */; };
-		2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A2D2BCB78860069C510 /* Searchbar.swift */; };
 		2C928A322BCB801F0069C510 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A312BCB801F0069C510 /* Spot.swift */; };
-		2C928A342BCC319F0069C510 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A332BCC319F0069C510 /* LocationManager.swift */; };
-		2C928A372BCC32B30069C510 /* SearchCompleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A362BCC32B30069C510 /* SearchCompleter.swift */; };
 		2C928A3B2BCC431A0069C510 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A3A2BCC431A0069C510 /* DataModel.swift */; };
 		2C928A3D2BCC451D0069C510 /* DataModel_newItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */; };
 		2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515A2BB0C0F100D63104 /* Becker_Marcus_P2App.swift */; };
@@ -27,14 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C5FF9682BE030FC0075AC2B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2C691CF22BCC5A0A00DDE217 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		2C691CF42BCCD0B100DDE217 /* TALocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TALocation.swift; sourceTree = "<group>"; };
 		2C691CF62BCCD61700DDE217 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAdvisor_Location.swift; sourceTree = "<group>"; };
-		2C928A2D2BCB78860069C510 /* Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchbar.swift; sourceTree = "<group>"; };
 		2C928A312BCB801F0069C510 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
-		2C928A332BCC319F0069C510 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		2C928A362BCC32B30069C510 /* SearchCompleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCompleter.swift; sourceTree = "<group>"; };
 		2C928A382BCC3BD70069C510 /* TripadvisorAPI.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = TripadvisorAPI.playground; path = ../TripadvisorAPI.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2C928A392BCC3D700069C510 /* GeneralAPI.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = GeneralAPI.playground; path = ../GeneralAPI.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2C928A3A2BCC431A0069C510 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -64,8 +60,6 @@
 		2C928A352BCC32910069C510 /* Experiments */ = {
 			isa = PBXGroup;
 			children = (
-				2C928A332BCC319F0069C510 /* LocationManager.swift */,
-				2C928A362BCC32B30069C510 /* SearchCompleter.swift */,
 			);
 			path = Experiments;
 			sourceTree = "<group>";
@@ -117,7 +111,6 @@
 				2CD1515C2BB0C0F100D63104 /* ContentView.swift */,
 				2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */,
 				2CD151702BB0D39F00D63104 /* MapView.swift */,
-				2C928A2D2BCB78860069C510 /* Searchbar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +120,7 @@
 			children = (
 				2C691CF22BCC5A0A00DDE217 /* AppController.swift */,
 				2C691CF62BCCD61700DDE217 /* APIManager.swift */,
+				2C5FF9682BE030FC0075AC2B /* MapViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -215,15 +209,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */,
-				2C928A342BCC319F0069C510 /* LocationManager.swift in Sources */,
 				2CDED61E2BCDD2A000C0EB90 /* TempTALoc.swift in Sources */,
 				2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */,
 				2C928A3D2BCC451D0069C510 /* DataModel_newItems.swift in Sources */,
 				2C691CF52BCCD0B200DDE217 /* TALocation.swift in Sources */,
 				2CD151712BB0D39F00D63104 /* MapView.swift in Sources */,
+				2C5FF9692BE030FC0075AC2B /* MapViewModel.swift in Sources */,
 				2C928A3B2BCC431A0069C510 /* DataModel.swift in Sources */,
-				2C928A372BCC32B30069C510 /* SearchCompleter.swift in Sources */,
-				2C928A2E2BCB78860069C510 /* Searchbar.swift in Sources */,
 				2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */,
 				2C928A322BCB801F0069C510 /* Spot.swift in Sources */,
 				2C691CF72BCCD61700DDE217 /* APIManager.swift in Sources */,

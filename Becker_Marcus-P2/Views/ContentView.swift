@@ -13,46 +13,46 @@ struct ContentView: View {
     //@Environment(\.modelContext) private var modelContext
     @Environment(AppController.self) private var appController: AppController
     
-    
+    @AppStorage("visibility_inspector") private var visibility_inspector = true
+    ///NEED to get clear on source of truth
     //@Query private var spots: [Spot]
     
     //@Binding var visableRegion: MKCoordinateRegion?
     //@State var coordinate: CLLocationCoordinate2D
 
-    @State private var selectedSpot: Spot?
+    ///@State private var selectedSpot: Spot?
     @Bindable var API = TripAdvisor_Location(locationID: "123456")
+    
+    //@Binding var searchStr: String
     
     
     var body: some View {
         @Bindable var dataModel = appController.dataModel
+        @Bindable var mapViewModel = appController.mapViewModel
         
-        var mapView = MapView(spot: $selectedSpot)
+        let mapView = MapView(mapViewModel: mapViewModel)
         
         NavigationSplitView {
-            List(selection: $selectedSpot) {
+            List(selection: $mapViewModel.selectedSpot) {
                 OutlineGroup(dataModel.allSpots, id: \.self, children: \.subSpots) { spot in
                     //TODO: Remove drop-down arrows from children
-                    NavigationLink {
-                        ///use detail view instead, since NavigationLink will redraw & flash every time
-                        mapView
-                        //MapView()
-                        
-                    } label: {
+                label: do {
                         HStack{
-                            //need to be unique images
-                            Image(systemName: "mappin.and.ellipse")
+                            
+                            Image(systemName: spot.iconName)
                             Text("\(spot.name)")
                         }
                     }
                     
                 }
                 
-                
-                
-                
-                //.onDelete(perform: deleteItems)
-                //TODO: ensure we have delete functionality
             }
+            //TODO: Find how to deselect
+//            .onTapGesture {
+//                mapViewModel.selectedSpot = nil
+//            }
+            
+            
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .toolbar {
                 ToolbarItem {
@@ -62,7 +62,7 @@ struct ContentView: View {
                 }
                 ToolbarItem {
                     Button(action: {deleteItem()}) {
-                        Label("Delet Item", systemImage: "minus")
+                        Label("Delete Item", systemImage: "minus")
                     }
                 }
                 //TODO: Remove this, make automatic
@@ -71,10 +71,36 @@ struct ContentView: View {
                         Label("Make API Call", systemImage: "tray.and.arrow.down")
                     }
                 }
+                
+                
             }
             } detail: {
                 mapView
-                //MapView()
+                    .searchable(text: $mapViewModel.searchStr, isPresented: $mapViewModel.searchPresented, prompt: "New Locations")
+                    .onSubmit(of: .search) {
+                        mapViewModel.search(for: mapViewModel.searchStr)
+                    }
+                
+                
+            }
+            .inspector(isPresented: $visibility_inspector) {
+                List(mapViewModel.searchResults, id: \.self) {res in
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(res.name ?? "Blank")
+                        
+                    }
+                }
+                .padding()
+                .frame(maxHeight: .infinity)
+                .toolbar {
+                    ToolbarItem(id: "inspector") {
+                        Button {
+                            visibility_inspector.toggle()
+                        } label: {
+                            Image(systemName: "sidebar.right")
+                        }
+                    }
+                }
             }
             .onAppear() {
 #if DEBUG
@@ -87,17 +113,24 @@ struct ContentView: View {
         
 
     private func addItem() {
+        //near golden
+        //39.793086, -105.213767
         
-        appController.dataModel.createSpot(spotTitle: "maintest", parent: (selectedSpot ?? nil), isHome: false, TA_ID: "12345", lat: 42.3, lon: 13)
+        //appController.dataModel.createSpot(spotTitle: "maintest", parent: (appController.mapViewModel.selectedSpot ?? nil), isHome: false, lat: 39.793086, lon: -105.213767)
+        
+        if appController.mapViewModel.selectedMapItem != nil {
+            appController.dataModel.createSpotSearch(item: appController.mapViewModel.selectedMapItem!, parent: (appController.mapViewModel.selectedSpot ?? nil), searchString: appController.mapViewModel.searchStr)
+        }
+        
         //appController.dataModel.createLegTest(legTitle: "mainleg", homeTitle: "hostel")
     }
     
     private func deleteItem() {
         withAnimation {
-            if selectedSpot != nil {
-                appController.dataModel.deleteSpot(spot: selectedSpot!)
+            if appController.mapViewModel.selectedSpot != nil {
+                appController.dataModel.deleteSpot(spot: appController.mapViewModel.selectedSpot!)
             }
-            selectedSpot = nil
+            appController.mapViewModel.selectedSpot = nil
         }
     }
     
@@ -106,21 +139,6 @@ struct ContentView: View {
         //API.getLocation()
     }
     
-    /*
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
-     */
+    
 }
 

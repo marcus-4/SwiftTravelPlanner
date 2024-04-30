@@ -12,10 +12,11 @@ import Foundation
 class AppController {
     var dataModel: DataModel
     //var selectionManager: SelectionManager
+    var mapViewModel: MapViewModel
     
     init() {
         dataModel = DataModel()
-        
+        mapViewModel = MapViewModel()
         
         //I don't belive i need or want multiple selection
         //selectionManager = SelectionManager()

@@ -46,11 +46,6 @@ class DataModel {
         
         fetchData()
         
-        ///PROTOTYPE VALUES, will be duplicated every time app is run unless commented out
-        
-        let leg1: Spot = createLegTest(legTitle: "Rome", homeTitle: "rome_hostel")
-        //let leg2: Spot = createLegTest(legTitle: "Florence", homeTitle: "flo_hostel")
-        
         
         
     }

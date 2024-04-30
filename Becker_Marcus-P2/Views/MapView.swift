@@ -8,71 +8,113 @@
 import SwiftUI
 import MapKit
 
-@MainActor class LocationsHandler: ObservableObject {
-    
-    static let shared = LocationsHandler()
-    public let manager: CLLocationManager
 
-    init() {
-        self.manager = CLLocationManager()
-        if self.manager.authorizationStatus == .notDetermined {
-            self.manager.requestWhenInUseAuthorization()
-        }
-    }
-}
+///What exactly does this do? Move into viewModel
+//@MainActor class LocationsHandler: ObservableObject {
+//    
+//    static let shared = LocationsHandler()
+//    public let manager: CLLocationManager
+//
+//    init() {
+//        self.manager = CLLocationManager()
+//        if self.manager.authorizationStatus == .notDetermined {
+//            self.manager.requestWhenInUseAuthorization()
+//        }
+//    }
+//}
 
 
 
 
 struct MapView: View {
     
-    //@Binding var coordinate: CLLocationCoordinate2D
-    @Binding var spot: Spot?
+    @Environment(\.isSearching) private var isSearching
     
-    //@ObservedObject var myVM = LocationManager()
+    @Bindable var mapViewModel: MapViewModel
     
-    @State private var position: MapCameraPosition = .automatic
-    //this is a binding, can go in viewmodel
+///These were not commented
+//    @Binding var spot: Spot?
+//    
+//    @State private var position: MapCameraPosition = .automatic
+//    //this is a binding, can go in viewmodel
+//    
+//    @State var visibleRegion: MKCoordinateRegion?
+//    @State private var selectedResult: MKMapItem?
+//    
+//    @State private var searchResults: [MKMapItem] = []
     
-    @State var visibleRegion: MKCoordinateRegion?
-    @State private var selectedResult: MKMapItem?
     
-    @State private var searchResults: [MKMapItem] = []
-    //visibleRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10, longitudinalMeters: 10)
-    
-    //@Binding var searchstring: String
     
     var body: some View {
         
+        //@ObservedObject var mapViewModel: MapViewModel
         
-        
-        Map(position: $position, selection: $selectedResult) {
-            Annotation("Rome", coordinate: .rome) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5).fill(.background)
-                    RoundedRectangle(cornerRadius: 5).stroke(.secondary, lineWidth: 5)
-                    Image(systemName: "bed.double").padding(5)
-                }
-            }
+        Map(position: $mapViewModel.position, selection: $mapViewModel.selectedMapItem) {
+            
+            
+            ForEach(mapViewModel.searchResults, id: \.self) {result in
+                            Marker(item: result)
+                        }
+                        .annotationTitles(.hidden)
+            
+            ForEach(mapViewModel.displayedSpots, id: \.self) {result in
+                Marker(item: result.mapItem)
+                        }
+                        .annotationTitles(.hidden)
+            
+            //Marker(item: mapViewModel.selectedSpot.mapItem)
+            
+//            Annotation(mapViewModel.selectedSpot!.mapItem) {
+//                ZStack {
+//                    RoundedRectangle(cornerRadius: 5).fill(.background)
+//                    RoundedRectangle(cornerRadius: 5).stroke(.secondary, lineWidth: 5)
+//                    Image(systemName: "bed.double").padding(5)
+//                }
+//            }
             //.annotationTitles(.hidden)
         }
         .mapStyle(.standard(elevation: .realistic))
         .safeAreaInset(edge: .bottom) {
                     HStack {
                         Spacer()
-                        //Searchbar(searchResults: $searchResults, searchString: $searchstring )
+                        //Searchbar(position: $position, searchResults: $searchResults, searchString: $searchstring )
                         //SearchCompleter(locVM: myVM)
                         //SearchCompleterLabelView(searchResult: myVM.searchResults.first, locVM: myVM)
                         }
                         Spacer()
                     }
-        .onChange(of: searchResults) { withAnimation { position = .automatic } }
-        .onChange(of: spot) { withAnimation { position = spot?.mapPosition ?? .automatic}
-            print(spot?.latitude)
-            print(spot?.longitude)
+        .onMapCameraChange { context in
+            mapViewModel.visibleRegion = context.region
+                }
+        //TODO: FIx force unwrapping here
+        .onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = (.item(mapViewModel.searchResults.first!))}}
+        //.onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = .automatic } }
+        
+        //.onChange(of: spot) { withAnimation { position = .item(spot?.mapItem ?? MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 50, longitude: 20)))) }
+        .onChange(of: mapViewModel.selectedSpot) { withAnimation { mapViewModel.position = mapViewModel.selectedSpot?.mapPosition ?? .automatic}
+        ///temp output
+            print(mapViewModel.selectedSpot?.latitude)
+            print(mapViewModel.selectedSpot?.longitude)
             }
+        .onChange(of: mapViewModel.position.positionedByUser) {
+            print("live")
+            print(mapViewModel.position)
+            print(mapViewModel.position.camera?.centerCoordinate)
+            print(mapViewModel.position.item)
+            print(mapViewModel.position.positionedByUser)
+            
+        }
+        .onChange(of: mapViewModel.searchPresented) {
+            print("search change")
+            print(mapViewModel.searchPresented)
+        }
+        .onChange(of: isSearching) {
+            print("isSearch")
+            print(isSearching)
+        }
+        ///temp
         .mapControls {
-                    MapUserLocationButton()
+                    //MapUserLocationButton()
                     MapCompass()
                     MapScaleView()
                 }
@@ -80,9 +122,6 @@ struct MapView: View {
     }
 }
 
-extension CLLocationCoordinate2D {
-    static let rome = CLLocationCoordinate2D(latitude: 41.8967, longitude: 12.4822)
-    
-}
+
 
 

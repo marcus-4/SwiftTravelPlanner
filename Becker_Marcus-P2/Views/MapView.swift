@@ -32,7 +32,7 @@ struct MapView: View {
     
     @Bindable var mapViewModel: MapViewModel
     
-///These were not commented
+///These were used originally
 //    @Binding var spot: Spot?
 //    
 //    @State private var position: MapCameraPosition = .automatic
@@ -62,7 +62,13 @@ struct MapView: View {
                         }
                         .annotationTitles(.hidden)
             
+            
+            ///Trying to map selected spot
+            if let currentSpot = mapViewModel.selectedSpot {
+                Marker(item: currentSpot.mapItem)
+            }
             //Marker(item: mapViewModel.selectedSpot.mapItem)
+            
             
 //            Annotation(mapViewModel.selectedSpot!.mapItem) {
 //                ZStack {
@@ -86,8 +92,21 @@ struct MapView: View {
         .onMapCameraChange { context in
             mapViewModel.visibleRegion = context.region
                 }
+        
+        .onChange(of: mapViewModel.searchResults) { withAnimation {
+            if let resultItem = mapViewModel.searchResults.first {
+                mapViewModel.position = (.item(resultItem))
+            }
+        }
+        }
+        
         //TODO: FIx force unwrapping here
-        .onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = (.item(mapViewModel.searchResults.first!))}}
+        //.onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = (.item(mapViewModel.searchResults.first!))}}
+        
+        
+        
+        
+        
         //.onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = .automatic } }
         
         //.onChange(of: spot) { withAnimation { position = .item(spot?.mapItem ?? MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 50, longitude: 20)))) }

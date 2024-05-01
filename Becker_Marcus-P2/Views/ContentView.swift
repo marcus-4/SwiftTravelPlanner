@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import MapKit
 
+
 struct ContentView: View {
     //@Environment(\.modelContext) private var modelContext
     @Environment(AppController.self) private var appController: AppController
@@ -35,24 +36,26 @@ struct ContentView: View {
         NavigationSplitView {
             List(selection: $mapViewModel.selectedSpot) {
                 OutlineGroup(dataModel.allSpots, id: \.self, children: \.subSpots) { spot in
-                    //TODO: Remove drop-down arrows from children
+                    //TODO: Remove drop-down arrows from children - isLeaf
+                    //OutlineGroup(dataModel.allSpots, id: \.self, parent: \.parentSpot, Leaf: {spot in spot.spotType == "place"}, children: \.subSpots) { spot in
                 label: do {
-                        HStack{
-                            
-                            Image(systemName: spot.iconName)
-                            Text("\(spot.name)")
-                        }
+                    HStack{
+                        
+                        Image(systemName: spot.iconName)
+                        Text("\(spot.name)")
                     }
+                }
                     
                 }
                 
-            }
+                
+            }.navigationTitle("Sidebar")
             //TODO: Find how to deselect
-//            .onTapGesture {
-//                mapViewModel.selectedSpot = nil
-//            }
+            //            .onTapGesture {
+            //                mapViewModel.selectedSpot = nil
+            //            }
             
-            
+            ///TODO: Refactor toolbar, put buttons in main toolbar, left of title
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .toolbar {
                 ToolbarItem {
@@ -74,41 +77,47 @@ struct ContentView: View {
                 
                 
             }
-            } detail: {
-                mapView
-                    .searchable(text: $mapViewModel.searchStr, isPresented: $mapViewModel.searchPresented, prompt: "New Locations")
-                    .onSubmit(of: .search) {
-                        mapViewModel.search(for: mapViewModel.searchStr)
-                    }
-                
-                
-            }
-            .inspector(isPresented: $visibility_inspector) {
-                List(mapViewModel.searchResults, id: \.self) {res in
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text(res.name ?? "Blank")
-                        
-                    }
+        
+        } content: {
+            
+            SpotContentPanel(mapViewModel: mapViewModel)
+        } detail: {
+            mapView
+                .searchable(text: $mapViewModel.searchStr, isPresented: $mapViewModel.searchPresented, prompt: "New Locations")
+                .onSubmit(of: .search) {
+                    mapViewModel.search(for: mapViewModel.searchStr)
                 }
-                .padding()
-                .frame(maxHeight: .infinity)
-                .toolbar {
-                    ToolbarItem(id: "inspector") {
-                        Button {
-                            visibility_inspector.toggle()
-                        } label: {
-                            Image(systemName: "sidebar.right")
-                        }
-                    }
+            
+            
+        }
+        
+        .inspector(isPresented: $visibility_inspector) {
+            List(mapViewModel.searchResults, id: \.self) {res in
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(res.name ?? "Blank")
+                    
                 }
             }
-            .onAppear() {
-#if DEBUG
-                //try? appController.dataModel.modelContext.delete(model: Spot.self)
-                //appController.dataModel.fetchData()
-#endif
+            .padding()
+            .frame(maxHeight: .infinity)
+            .toolbar {
+                ToolbarItem(id: "inspector") {
+                    Button {
+                        visibility_inspector.toggle()
+                    } label: {
+                        Image(systemName: "sidebar.right")
+                    }
+                }
             }
         }
+        .onAppear() {
+#if DEBUG
+            //try? appController.dataModel.modelContext.delete(model: Spot.self)
+            //appController.dataModel.fetchData()
+#endif
+        }
+    }
+    
     
         
 
@@ -135,8 +144,11 @@ struct ContentView: View {
     }
     
     //TODO: Remove this, make automatic
+    
     private func apiCall() {
         //API.getLocation()
+        appController.mapViewModel.apiUpdate()
+        
     }
     
     

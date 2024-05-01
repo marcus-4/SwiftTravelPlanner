@@ -63,7 +63,7 @@ extension DataModel {
     
     
     
-    
+    /*
     func createSpotTA(spotTitle: String, parent: Spot?, isHome: Bool, TA_ID: String?, lat: Double, lon: Double) {
         var TAInfo = TripAdvisor_Location(locationID: TA_ID!).getLocation()
         
@@ -100,6 +100,7 @@ extension DataModel {
         
         
     }
+    */
     
     
     

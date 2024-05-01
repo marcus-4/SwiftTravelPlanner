@@ -11,7 +11,7 @@ import _MapKit_SwiftUI
 
 
 
-
+//@MainActor???
 @Observable
 class MapViewModel {
     
@@ -32,8 +32,16 @@ class MapViewModel {
     var selectedSpot: Spot? {
         didSet {
             
-            displayedSpots = selectedSpot!.subSpots!
-            displayedSpots.append(selectedSpot!)
+            if let localSelectSpot = selectedSpot {
+                if var localDisplayedSpots = localSelectSpot.subSpots {
+                    
+                    localDisplayedSpots.append(localSelectSpot)
+                    self.displayedSpots = localDisplayedSpots
+                }
+                
+                //selectedMapItem = localSelectSpot.mapItem
+            }
+            selectedMapItem = selectedSpot?.mapItem
             
             
 //            displayedSpots = []
@@ -64,7 +72,7 @@ class MapViewModel {
     
     
     func search(for query: String) {
-        print("search execute")
+        //print("search execute")
         
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
@@ -79,8 +87,20 @@ class MapViewModel {
             searchResults = response?.mapItems ?? []
         }
         
-        print("search complete")
-        print(searchResults)
+        //print("search complete")
+        //print(searchResults)
+    }
+    
+    
+    
+    func apiUpdate() {
+        
+        Task {
+            await selectedSpot?.getTAInfo()
+            
+        }
+        
+        
     }
     
     

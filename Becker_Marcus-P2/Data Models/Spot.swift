@@ -77,7 +77,7 @@ final class Spot: Identifiable {
         
     
     
-    var TA_ID: String?
+    var TA_ID: String
     //Needs to be initialized or found via search
     
     ///Make a function to update this instead
@@ -92,17 +92,18 @@ final class Spot: Identifiable {
     
     //This is currently unsafe with the optional
     //MARK: Working to add this functionality to the createSpot function in datamodel
-    func getTAInfo() {
+    func getTAInfo() async {
         
-        ///self.TAInfo = try await TripAdvisor_Location(locationID: TA_ID!).getLocation()
-        //self.latitude = Double(TAInfo?.latitude ?? "0") ?? 0.0
-        //self.longitude = Double(TAInfo?.longitude ?? "0") ?? 0.0
-        
+        Task {
+            if TA_ID != "" {
+                self.TAInfo = try await TripAdvisor_Location(locationID: TA_ID).getLocation()
+            }
+        }
     }
      
     
     //for spots within a leg
-    init(name: String, parent: Spot?, sType: String, TA_ID: String?, TAInfo: TALocation?, lat: Double, lon: Double){
+    init(name: String, parent: Spot?, sType: String, TA_ID: String, TAInfo: TALocation?, lat: Double, lon: Double){
         self.id = UUID()
         self.name = name
         self.spotType = sType
@@ -117,7 +118,7 @@ final class Spot: Identifiable {
     //for leg/top level
 
     convenience init(name: String, parent: Spot?, sType: String, lat: Double, lon: Double){
-        self.init(name: name, parent: parent, sType: sType, TA_ID: nil, TAInfo: nil, lat: lat, lon: lon)
+        self.init(name: name, parent: parent, sType: sType, TA_ID: "", TAInfo: nil, lat: lat, lon: lon)
         
     }
     

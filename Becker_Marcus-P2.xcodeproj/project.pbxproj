@@ -19,9 +19,9 @@
 		2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1515C2BB0C0F100D63104 /* ContentView.swift */; };
 		2CD151612BB0C0F200D63104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151602BB0C0F200D63104 /* Assets.xcassets */; };
 		2CD151642BB0C0F200D63104 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */; };
-		2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */; };
 		2CD151712BB0D39F00D63104 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD151702BB0D39F00D63104 /* MapView.swift */; };
 		2CDED61E2BCDD2A000C0EB90 /* TempTALoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */; };
+		2CE1EE4B2BE2D6F80073D99A /* SpotContentPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EE4A2BE2D6F80073D99A /* SpotContentPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,9 +41,9 @@
 		2CD151602BB0C0F200D63104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Becker_Marcus_P2.entitlements; sourceTree = "<group>"; };
-		2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeView.swift; sourceTree = "<group>"; };
 		2CD151702BB0D39F00D63104 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTALoc.swift; sourceTree = "<group>"; };
+		2CE1EE4A2BE2D6F80073D99A /* SpotContentPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotContentPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				2CD1515C2BB0C0F100D63104 /* ContentView.swift */,
-				2CD1516E2BB0C1CA00D63104 /* PrototypeView.swift */,
 				2CD151702BB0D39F00D63104 /* MapView.swift */,
+				2CE1EE4A2BE2D6F80073D99A /* SpotContentPanel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 				2CD1515B2BB0C0F100D63104 /* Becker_Marcus_P2App.swift in Sources */,
 				2C928A322BCB801F0069C510 /* Spot.swift in Sources */,
 				2C691CF72BCCD61700DDE217 /* APIManager.swift in Sources */,
-				2CD1516F2BB0C1CA00D63104 /* PrototypeView.swift in Sources */,
+				2CE1EE4B2BE2D6F80073D99A /* SpotContentPanel.swift in Sources */,
 				2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,6 +1,6 @@
 //Derived From TripAdvisor API reference Template
 //Marcus Becker
-/*
+
 import Foundation
  
 //MARK: commented out because it was my non-working attempt to adapt to async await style API call, to match notes
@@ -40,8 +40,8 @@ class TripAdvisor_Location {
             //print(httpResponse!)
             
             let receivedLocation = try self.decoder.decode(TALocation.self,from: data)
-            print(data)
-            //print(receivedLocation?.latitude)
+            //print(data)
+            //print(receivedLocation.latitude!)
             
             
             
@@ -64,5 +64,5 @@ class TripAdvisor_Location {
 }
 
 
-*/
+
 

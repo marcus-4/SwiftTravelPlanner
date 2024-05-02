@@ -96,12 +96,12 @@ struct MapView: View {
         .onChange(of: mapViewModel.searchResults) { withAnimation {
             if let resultItem = mapViewModel.searchResults.first {
                 mapViewModel.position = (.item(resultItem))
+                mapViewModel.selectedMapItem = resultItem
             }
         }
         }
         
-        //TODO: FIx force unwrapping here
-        //.onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = (.item(mapViewModel.searchResults.first!))}}
+        
         
         
         

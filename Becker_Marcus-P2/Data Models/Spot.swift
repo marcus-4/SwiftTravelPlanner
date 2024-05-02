@@ -23,13 +23,15 @@ final class Spot: Identifiable {
     
     var isParent: Bool
     
+    ///TODO: Does not live update
+    var isHome: Bool
+    
     //TODO: Store system Images, calculated property based on status, potentially activity type? 
     //parent Leg: "map"
     //home: "bed.double"
     //default: "mappin.and.ellipse"
     
     var spotType: String
-    
     
     @Transient
     var iconName: String {
@@ -54,6 +56,9 @@ final class Spot: Identifiable {
     var latitude: Double
     var longitude: Double
     
+    var latDelta: Double = 0.15
+    var lonDelta: Double = 0.15
+    
     
     @Transient
     var mapItem: MKMapItem {
@@ -65,9 +70,13 @@ final class Spot: Identifiable {
     
     
     
+    
     @Transient
     var mapPosition: MapCameraPosition {
         .item(MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))))
+        
+        //.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+        //                           span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)))
         
         ///This doesn't work, but ^^ is too zoomed in
 //        .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), latitudinalMeters: 50,
@@ -97,8 +106,20 @@ final class Spot: Identifiable {
         Task {
             if TA_ID != "" {
                 self.TAInfo = try await TripAdvisor_Location(locationID: TA_ID).getLocation()
+            } else {
+                print("TA_ID is Empty")
             }
+            
         }
+    }
+    
+    
+    func changeSpotType() {
+        switch isHome {
+        case true: self.spotType = "home"
+        default: self.spotType = "place"
+        }
+        
     }
      
     
@@ -113,16 +134,24 @@ final class Spot: Identifiable {
         self.TAInfo = TAInfo
         self.latitude = lat
         self.longitude = lon
+        self.isHome = false;
     }
     
     //for leg/top level
-
     convenience init(name: String, parent: Spot?, sType: String, lat: Double, lon: Double){
         self.init(name: name, parent: parent, sType: sType, TA_ID: "", TAInfo: nil, lat: lat, lon: lon)
         
     }
     
-    
+    //using MKMapItem from search- this is functionally the same as doing it from the dataModel function
+    convenience init(mapItem: MKMapItem, parent: Spot?){
+        
+        self.init(name: mapItem.name!, parent: parent, sType: "place", TA_ID: "", TAInfo: nil, lat: mapItem.placemark.coordinate.latitude, lon: mapItem.placemark.coordinate.longitude)
+        
+        //self.init(mapItem) = mapItem
+        //self.mapItem = mapItem
+        ///comment out @Transient above, not sure why it isnt letting me add directly - might be irrelevant due to transient MKMapItem
+    }
     
     
 }

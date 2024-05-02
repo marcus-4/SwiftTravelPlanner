@@ -43,15 +43,22 @@ class MapViewModel {
             }
             selectedMapItem = selectedSpot?.mapItem
             
-            
-//            displayedSpots = []
-//            displayedSpots.insert(selectedSpot!)
-//            for childSpot in selectedSpot!.subSpots {
-//                //displayedSpots.append(childSpot)
-//                displayedSpots.insert(childSpot)
-//            }
         }
     }
+    
+    var selectedResult: MKMapItem? {
+        didSet {
+            if let localSelectedResult = selectedResult {
+                print(localSelectedResult)
+                selectedMapItem = localSelectedResult
+            }
+        }
+    }
+    ///How do I really want these linked??
+    
+    
+    
+    var useTASearch: Bool = false
 
     
     

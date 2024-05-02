@@ -50,7 +50,8 @@ struct ContentView: View {
                 
                 
             }.navigationTitle("Sidebar")
-            //TODO: Find how to deselect
+            //TODO: Be able to move/rearrange Spots
+            //TODO: Find how to deselect better
             //            .onTapGesture {
             //                mapViewModel.selectedSpot = nil
             //            }
@@ -86,16 +87,19 @@ struct ContentView: View {
                 .searchable(text: $mapViewModel.searchStr, isPresented: $mapViewModel.searchPresented, prompt: "New Locations")
                 .onSubmit(of: .search) {
                     mapViewModel.search(for: mapViewModel.searchStr)
+                    //this probably doesn't need to be passed, since the viewmodel already has the searchString
                 }
             
             
         }
         
         .inspector(isPresented: $visibility_inspector) {
-            List(mapViewModel.searchResults, id: \.self) {res in
+            List(mapViewModel.searchResults, id: \.self, selection: $mapViewModel.selectedResult) {res in
                 VStack(alignment: .leading, spacing: 0) {
                     Text(res.name ?? "Blank")
-                    
+                    ///Expand view To show details upon selection
+                    ///Find what MKLocalSearch can return exactly
+                    ///Make seperate inspector View
                 }
             }
             .padding()
@@ -108,6 +112,15 @@ struct ContentView: View {
                         Image(systemName: "sidebar.right")
                     }
                 }
+                ///TODO: useTASearch Toggle
+                ToolbarItem{
+                    Button {
+                        //visibility_inspector.toggle()
+                    } label: {
+                        Image(systemName: "search")
+                    }
+                }
+                
             }
         }
         .onAppear() {

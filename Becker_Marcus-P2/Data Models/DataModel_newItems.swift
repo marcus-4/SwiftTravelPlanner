@@ -40,6 +40,8 @@ extension DataModel {
     func createSpotSearch(item: MKMapItem, parent: Spot?, searchString: String) {
         var localType: String = (parent != nil) ? "place" : "leg"
         
+        //TODO: attempting to pass in MKMapItem Directly
+        //let newSpot = Spot(item)
         
         let newSpot = Spot(name: (item.name ?? searchString), parent: parent, sType: localType, lat: item.placemark.coordinate.latitude, lon: item.placemark.coordinate.longitude)
         

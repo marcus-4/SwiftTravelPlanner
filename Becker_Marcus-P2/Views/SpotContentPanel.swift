@@ -18,8 +18,12 @@ struct SpotContentPanel: View {
     
     @ViewBuilder
     private func panelContent() -> some View {
-        switch mapViewModel.selectedSpot {
+        switch mapViewModel.selectedSpot?.spotType {
+        //case "leg": legContent()
+        case "place": spotContent()
+        case "home": spotContent()
         case nil: EmptyView()
+        //default: EmptyView()
         default: spotContent()
         }
         
@@ -27,15 +31,24 @@ struct SpotContentPanel: View {
     
     @ViewBuilder
     private func spotContent() -> some View {
-        
-        
         if let localSpot = mapViewModel.selectedSpot {
             @Bindable var bindSpot = mapViewModel.selectedSpot!
             
             VStack {
                 
                 TextField("Name", text: $bindSpot.name)
-                TextField("spotType", text: $bindSpot.spotType)
+                ///Conditional place vs home vs leg
+                
+                Toggle("Home Base", systemImage: localSpot.iconName, isOn: $bindSpot.isHome)
+                    .onChange(of: localSpot.isHome) { bindSpot.changeSpotType()}
+                    .toggleStyle(ButtonToggleStyle()).tint(.green)
+                    
+                
+                
+                     
+                //TextField("spotType", text: $bindSpot.spotType)
+                Text("spotType: \(localSpot.spotType)")
+                
                 Text("\(localSpot.latitude)")
                 Text("\(localSpot.longitude)")
                 
@@ -60,6 +73,21 @@ struct SpotContentPanel: View {
             }
         }
     }
+    
+    
+    @ViewBuilder
+    private func legContent() -> some View {
+        if let localSpot = mapViewModel.selectedSpot {
+            @Bindable var bindSpot = mapViewModel.selectedSpot!
+            
+            VStack {
+                //TODO: Create leg overview
+                Text("Leg Overview")
+            }
+        }
+    }
+    
+    
     
     
 }

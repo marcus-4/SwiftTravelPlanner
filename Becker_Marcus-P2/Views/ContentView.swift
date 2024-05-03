@@ -87,10 +87,10 @@ struct ContentView: View {
                 .searchable(text: $mapViewModel.searchStr, isPresented: $mapViewModel.searchPresented, prompt: "New Locations")
                 .onSubmit(of: .search) {
                     mapViewModel.search(for: mapViewModel.searchStr)
-                    //this probably doesn't need to be passed, since the viewmodel already has the searchString
+                    //searchStr probably doesn't need to be passed, since the viewmodel already holds the searchStr
+                    
+                    
                 }
-            
-            
         }
         
         .inspector(isPresented: $visibility_inspector) {
@@ -144,7 +144,15 @@ struct ContentView: View {
             appController.dataModel.createSpotSearch(item: appController.mapViewModel.selectedMapItem!, parent: (appController.mapViewModel.selectedSpot ?? nil), searchString: appController.mapViewModel.searchStr)
         }
         
-        //appController.dataModel.createLegTest(legTitle: "mainleg", homeTitle: "hostel")
+        appController.mapViewModel.searchResults = []
+        
+        appController.mapViewModel.updateDisplayedSpots()
+//        if let localLeg = appController.mapViewModel.selectedSpot {
+//            localLeg.changeRegion(newRegion: appController.mapViewModel.visibleRegion)
+//            
+//        }
+        
+        
     }
     
     private func deleteItem() {
@@ -154,6 +162,7 @@ struct ContentView: View {
             }
             appController.mapViewModel.selectedSpot = nil
         }
+        appController.mapViewModel.updateDisplayedSpots()
     }
     
     //TODO: Remove this, make automatic

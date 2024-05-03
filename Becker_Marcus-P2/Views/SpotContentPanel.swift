@@ -19,7 +19,7 @@ struct SpotContentPanel: View {
     @ViewBuilder
     private func panelContent() -> some View {
         switch mapViewModel.selectedSpot?.spotType {
-        //case "leg": legContent()
+        case "leg": legContent()
         case "place": spotContent()
         case "home": spotContent()
         case nil: EmptyView()
@@ -35,6 +35,7 @@ struct SpotContentPanel: View {
             @Bindable var bindSpot = mapViewModel.selectedSpot!
             
             VStack {
+                Text("isPresented: \(String(mapViewModel.searchPresented))")
                 
                 TextField("Name", text: $bindSpot.name)
                 ///Conditional place vs home vs leg

@@ -54,54 +54,64 @@ struct MapView: View {
             
             ForEach(mapViewModel.searchResults, id: \.self) {result in
                             Marker(item: result)
+                
+                            
+                            //Annotation(item: result)
                         }
                         .annotationTitles(.hidden)
             
             ForEach(mapViewModel.displayedSpots, id: \.self) {result in
-                Marker(item: result.mapItem)
+                //Marker(item: result.mapItem)
+                Annotation("\(result.name)", coordinate: result.spotCoords) {
+                    annotationContent(spot: result)
+                }
+                
                         }
                         .annotationTitles(.hidden)
             
             
             ///Trying to map selected spot
             if let currentSpot = mapViewModel.selectedSpot {
-                Marker(item: currentSpot.mapItem)
+                //Marker(item: currentSpot.mapItem)
+                if (currentSpot.spotType == "leg") {
+                    MapCircle(center: currentSpot.spotCoords, radius: currentSpot.radius).foregroundStyle(currentSpot.iconColor.opacity(0.25))
+                    
+                } else {
+                    Annotation("\(currentSpot.name)", coordinate: currentSpot.spotCoords) {
+                        annotationContent(spot: currentSpot)
+                    }
+                }
+                //Annotation(item: currentSpot.mapItem)
             }
-            //Marker(item: mapViewModel.selectedSpot.mapItem)
-            
-            
-//            Annotation(mapViewModel.selectedSpot!.mapItem) {
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 5).fill(.background)
-//                    RoundedRectangle(cornerRadius: 5).stroke(.secondary, lineWidth: 5)
-//                    Image(systemName: "bed.double").padding(5)
-//                }
-//            }
-            //.annotationTitles(.hidden)
+
         }
         .mapStyle(.standard(elevation: .realistic))
-        .safeAreaInset(edge: .bottom) {
-                    HStack {
-                        Spacer()
-                        //Searchbar(position: $position, searchResults: $searchResults, searchString: $searchstring )
-                        //SearchCompleter(locVM: myVM)
-                        //SearchCompleterLabelView(searchResult: myVM.searchResults.first, locVM: myVM)
-                        }
-                        Spacer()
-                    }
         .onMapCameraChange { context in
             mapViewModel.visibleRegion = context.region
+            
                 }
         
         .onChange(of: mapViewModel.searchResults) { withAnimation {
+            
+            ///Test automatic view
+            mapViewModel.position = .automatic
+        }
             if let resultItem = mapViewModel.searchResults.first {
-                mapViewModel.position = (.item(resultItem))
+                //mapViewModel.position = (.item(resultItem))
                 mapViewModel.selectedMapItem = resultItem
             }
         }
+        
+        .onChange(of: mapViewModel.displayedSpots) {
+            if mapViewModel.searchResults == [] {
+                
+                mapViewModel.position = .automatic
+                if let localLeg = mapViewModel.selectedSpot {
+                    localLeg.changeRegion(newRegion: mapViewModel.visibleRegion)
+                    
+                }
+            }
         }
-        
-        
         
         
         
@@ -110,27 +120,21 @@ struct MapView: View {
         //.onChange(of: mapViewModel.searchResults) { withAnimation { mapViewModel.position = .automatic } }
         
         //.onChange(of: spot) { withAnimation { position = .item(spot?.mapItem ?? MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 50, longitude: 20)))) }
-        .onChange(of: mapViewModel.selectedSpot) { withAnimation { mapViewModel.position = mapViewModel.selectedSpot?.mapPosition ?? .automatic}
-        ///temp output
-            print(mapViewModel.selectedSpot?.latitude)
-            print(mapViewModel.selectedSpot?.longitude)
-            }
-        .onChange(of: mapViewModel.position.positionedByUser) {
-            print("live")
-            print(mapViewModel.position)
-            print(mapViewModel.position.camera?.centerCoordinate)
-            print(mapViewModel.position.item)
-            print(mapViewModel.position.positionedByUser)
+        .onChange(of: mapViewModel.selectedSpot) { withAnimation {
+            //mapViewModel.position = mapViewModel.selectedSpot?.mapPosition ?? .automatic
+            ///Test automatic view
+            //print("spotselect \(mapViewModel.selectedSpot)")
+            mapViewModel.position = .automatic
+        }
+        
             
-        }
-        .onChange(of: mapViewModel.searchPresented) {
-            print("search change")
-            print(mapViewModel.searchPresented)
-        }
-        .onChange(of: isSearching) {
-            print("isSearch")
-            print(isSearching)
-        }
+            
+            
+        ///temp output
+            
+            }
+        
+        
         ///temp
         .mapControls {
                     //MapUserLocationButton()
@@ -139,6 +143,27 @@ struct MapView: View {
                 }
         
     }
+    
+    
+    
+    @ViewBuilder
+    private func annotationContent(spot: Spot) -> some View {
+        if false {//(spot.spotType == "leg") {
+
+        
+            
+            
+        } else {
+            ZStack {
+                RoundedRectangle(cornerRadius: 5).fill(.background)
+                RoundedRectangle(cornerRadius: 5).stroke(.secondary, lineWidth: 5).fill(spot.iconColor)
+                Image(systemName: spot.iconName).padding(5)
+            }
+        }
+        
+    }
+    
+    
 }
 
 

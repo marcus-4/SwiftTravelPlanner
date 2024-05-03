@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import MapKit
 import _MapKit_SwiftUI
+import SwiftUI
 
 @Model
 final class Spot: Identifiable {
@@ -47,7 +48,20 @@ final class Spot: Identifiable {
         }
     }
     
-    
+    @Transient
+    var iconColor: Color {
+        switch spotType {
+        case "leg":
+            return .orange
+        case "home":
+            return .purple
+        case "place":
+            return .blue
+        default:
+            return .yellow
+        }
+    }
+
     
     
     
@@ -56,8 +70,38 @@ final class Spot: Identifiable {
     var latitude: Double
     var longitude: Double
     
-    var latDelta: Double = 0.15
-    var lonDelta: Double = 0.15
+    var latDelta: Double
+    var lonDelta: Double
+    
+    var radius: Double {
+        return max(latDelta*111000, lonDelta*111000) / 2
+    }
+    
+    
+//    @Transient
+//    var spotAnnotation: Annotation {
+//        
+//        .init(coordinate: CLLocationCoordinate2D, anchor: UnitPoint, content: () -> Content, label: () -> Label)
+////    Label(name, systemImage: Image(systemName: iconName)
+////              Content : annotationContent()
+//        
+//    }
+//   
+//    @ViewBuilder
+//    func annotationContent() -> (() -> Content) {
+//        ZStack {
+//            RoundedRectangle(cornerRadius: 5).fill(.background)
+//            RoundedRectangle(cornerRadius: 5).stroke(.secondary, lineWidth: 5)
+//            Image(systemName: iconName).padding(5)
+//        }
+//    }
+//        
+    
+    @Transient
+    var spotCoords: CLLocationCoordinate2D {
+        .init(latitude: latitude, longitude: longitude)
+    }
+    
     
     
     @Transient
@@ -68,7 +112,23 @@ final class Spot: Identifiable {
         
     }
     
-    
+    @Transient
+    var mapRegion: MKCoordinateRegion {
+        get {
+            MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                                       span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta))
+        }
+        
+        
+        set{
+            self.latitude = newValue.center.latitude
+            self.longitude = newValue.center.longitude
+            self.latDelta = newValue.span.latitudeDelta
+            self.lonDelta = newValue.span.longitudeDelta
+            
+            
+        }
+    }
     
     
     @Transient
@@ -121,6 +181,10 @@ final class Spot: Identifiable {
         }
         
     }
+    
+    func changeRegion(newRegion: MKCoordinateRegion?) {
+        if let newRegion = newRegion { self.mapRegion = newRegion }
+    }
      
     
     //for spots within a leg
@@ -135,6 +199,8 @@ final class Spot: Identifiable {
         self.latitude = lat
         self.longitude = lon
         self.isHome = false;
+        self.latDelta = 0.001
+        self.lonDelta = 0.001
     }
     
     //for leg/top level

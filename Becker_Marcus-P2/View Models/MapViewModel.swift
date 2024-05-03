@@ -31,18 +31,7 @@ class MapViewModel {
     var selectedMapItem: MKMapItem?
     var selectedSpot: Spot? {
         didSet {
-            
-            if let localSelectSpot = selectedSpot {
-                if var localDisplayedSpots = localSelectSpot.subSpots {
-                    
-                    localDisplayedSpots.append(localSelectSpot)
-                    self.displayedSpots = localDisplayedSpots
-                }
-                
-                //selectedMapItem = localSelectSpot.mapItem
-            }
-            selectedMapItem = selectedSpot?.mapItem
-            
+            updateDisplayedSpots()
         }
     }
     
@@ -64,7 +53,13 @@ class MapViewModel {
     
     var searchStr: String = ""
     
-    var searchPresented: Bool = true
+    var searchPresented: Bool = true {
+        didSet {
+            if searchPresented == false {
+                searchResults = []
+            }
+        }
+    }
     
     var visibleRegion: MKCoordinateRegion?
     
@@ -74,6 +69,21 @@ class MapViewModel {
     var searchCompleter = MKLocalSearchCompleter()
     
     init() {
+        
+    }
+        
+    func updateDisplayedSpots() {
+        if let localSelectSpot = selectedSpot {
+            if var localDisplayedSpots = localSelectSpot.subSpots {
+                
+                ///Shows or Hides Pin for Overall Leg
+                //localDisplayedSpots.append(localSelectSpot)
+                self.displayedSpots = localDisplayedSpots
+            }
+            
+            //selectedMapItem = localSelectSpot.mapItem
+        }
+        selectedMapItem = selectedSpot?.mapItem
         
     }
     

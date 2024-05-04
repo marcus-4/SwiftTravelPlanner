@@ -20,5 +20,10 @@ struct Becker_Marcus_P2App: App {
             ContentView()
         }
         .environment(appController)
+        
+        Settings {
+            PreferencesView()
+        }
     }
+    
 }

@@ -7,11 +7,34 @@
 
 import Foundation
 
-//need to actually make these calls
-//figure out where async calls fit in
 
-//create persistent items based on the API Calls
 
-//TODO: Swift web Permissions
+//Search with TA
 
-//Search with 
+
+class APIManager {
+    
+    //var mapViewModel: MapViewModel
+    
+    var TAItem: TALocation?
+    
+    init(TAItem: TALocation? = nil) {
+
+        self.TAItem = TAItem
+    }
+    
+    func getTASearch(searchStr: String) async {
+        
+        Task {
+            if searchStr != "" {
+                self.TAItem = try await TripAdvisor_Search(searchStr: searchStr).getLocation()
+            } else {
+                print("Search String is Empty")
+            }
+            
+        }
+        
+        print(TAItem)
+    }
+    
+}

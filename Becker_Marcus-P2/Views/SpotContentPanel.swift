@@ -42,7 +42,7 @@ struct SpotContentPanel: View {
                 
                 Toggle("Home Base", systemImage: localSpot.iconName, isOn: $bindSpot.isHome)
                     .onChange(of: localSpot.isHome) { bindSpot.changeSpotType()}
-                    .toggleStyle(ButtonToggleStyle()).tint(.green)
+                    .toggleStyle(ButtonToggleStyle()).tint(.purple)
                     
                 
                 
@@ -84,11 +84,15 @@ struct SpotContentPanel: View {
             VStack {
                 //TODO: Create leg overview
                 Text("Leg Overview")
+                
+                
+                Button(action: {bindSpot.changeRegion(newRegion: mapViewModel.visibleRegion)}) {
+                    Text("Update Leg Visable Region")
+                }
             }
         }
+        
     }
-    
-    
     
     
 }

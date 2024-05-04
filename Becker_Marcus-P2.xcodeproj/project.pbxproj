@@ -20,8 +20,9 @@
 		2CD151612BB0C0F200D63104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151602BB0C0F200D63104 /* Assets.xcassets */; };
 		2CD151642BB0C0F200D63104 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */; };
 		2CD151712BB0D39F00D63104 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD151702BB0D39F00D63104 /* MapView.swift */; };
-		2CDED61E2BCDD2A000C0EB90 /* TempTALoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */; };
 		2CE1EE4B2BE2D6F80073D99A /* SpotContentPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EE4A2BE2D6F80073D99A /* SpotContentPanel.swift */; };
+		2CE1EE4D2BE5ADAE0073D99A /* TripAdvisor_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EE4C2BE5ADAE0073D99A /* TripAdvisor_Search.swift */; };
+		2CE1EE552BE5BAAA0073D99A /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EE542BE5BAAA0073D99A /* PreferencesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +43,9 @@
 		2CD151632BB0C0F200D63104 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CD151652BB0C0F200D63104 /* Becker_Marcus_P2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Becker_Marcus_P2.entitlements; sourceTree = "<group>"; };
 		2CD151702BB0D39F00D63104 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTALoc.swift; sourceTree = "<group>"; };
 		2CE1EE4A2BE2D6F80073D99A /* SpotContentPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotContentPanel.swift; sourceTree = "<group>"; };
+		2CE1EE4C2BE5ADAE0073D99A /* TripAdvisor_Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAdvisor_Search.swift; sourceTree = "<group>"; };
+		2CE1EE542BE5BAAA0073D99A /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				2CD1515C2BB0C0F100D63104 /* ContentView.swift */,
 				2CD151702BB0D39F00D63104 /* MapView.swift */,
 				2CE1EE4A2BE2D6F80073D99A /* SpotContentPanel.swift */,
+				2CE1EE542BE5BAAA0073D99A /* PreferencesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,8 +131,8 @@
 		2CD1516D2BB0C19300D63104 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				2CE1EE4C2BE5ADAE0073D99A /* TripAdvisor_Search.swift */,
 				2C928A2B2BCB6D020069C510 /* TripAdvisor_Location.swift */,
-				2CDED61D2BCDD2A000C0EB90 /* TempTALoc.swift */,
 				2C928A312BCB801F0069C510 /* Spot.swift */,
 				2C928A3A2BCC431A0069C510 /* DataModel.swift */,
 				2C928A3C2BCC451D0069C510 /* DataModel_newItems.swift */,
@@ -209,7 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD1515D2BB0C0F100D63104 /* ContentView.swift in Sources */,
-				2CDED61E2BCDD2A000C0EB90 /* TempTALoc.swift in Sources */,
+				2CE1EE4D2BE5ADAE0073D99A /* TripAdvisor_Search.swift in Sources */,
 				2C928A2C2BCB6D020069C510 /* TripAdvisor_Location.swift in Sources */,
 				2C928A3D2BCC451D0069C510 /* DataModel_newItems.swift in Sources */,
 				2C691CF52BCCD0B200DDE217 /* TALocation.swift in Sources */,
@@ -221,6 +224,7 @@
 				2C691CF72BCCD61700DDE217 /* APIManager.swift in Sources */,
 				2CE1EE4B2BE2D6F80073D99A /* SpotContentPanel.swift in Sources */,
 				2C691CF32BCC5A0A00DDE217 /* AppController.swift in Sources */,
+				2CE1EE552BE5BAAA0073D99A /* PreferencesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

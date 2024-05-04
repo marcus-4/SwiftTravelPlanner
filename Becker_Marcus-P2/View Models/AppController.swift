@@ -14,9 +14,12 @@ class AppController {
     //var selectionManager: SelectionManager
     var mapViewModel: MapViewModel
     
+    //var apiManager: APIManager
+    
     init() {
         dataModel = DataModel()
         mapViewModel = MapViewModel()
+        //apiManager = APIManager(mapViewModel: mapViewModel)
         
         //I don't belive i need or want multiple selection
         //selectionManager = SelectionManager()

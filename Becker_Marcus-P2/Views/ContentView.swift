@@ -15,8 +15,6 @@ struct ContentView: View {
     @Environment(AppController.self) private var appController: AppController
     
     @AppStorage("visibility_inspector") private var visibility_inspector = true
-    ///NEED to get clear on source of truth
-    //@Query private var spots: [Spot]
     
     //@Binding var visableRegion: MKCoordinateRegion?
     //@State var coordinate: CLLocationCoordinate2D
@@ -57,28 +55,28 @@ struct ContentView: View {
             //            }
             
             ///TODO: Refactor toolbar, put buttons in main toolbar, left of title
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: {addItem()}) {
-                        Label("Add Item", systemImage: "plus")
+                .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: {addItem()}) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
-                }
-                ToolbarItem {
-                    Button(action: {deleteItem()}) {
-                        Label("Delete Item", systemImage: "minus")
+                    ToolbarItem {
+                        Button(action: {deleteItem()}) {
+                            Label("Delete Item", systemImage: "minus")
+                        }
                     }
-                }
-                //TODO: Remove this, make automatic
-                ToolbarItem {
-                    Button(action: {apiCall()}) {
-                        Label("Make API Call", systemImage: "tray.and.arrow.down")
+                    //TODO: Remove this, make automatic
+                    ToolbarItem {
+                        Button(action: {apiCall()}) {
+                            Label("Make API Call", systemImage: "tray.and.arrow.down")
+                        }
                     }
+                    
+                    
                 }
-                
-                
-            }
-        
+            
         } content: {
             
             SpotContentPanel(mapViewModel: mapViewModel)
@@ -86,7 +84,7 @@ struct ContentView: View {
             mapView
                 .searchable(text: $mapViewModel.searchStr, isPresented: $mapViewModel.searchPresented, prompt: "New Locations")
                 .onSubmit(of: .search) {
-                    mapViewModel.search(for: mapViewModel.searchStr)
+                    mapViewModel.search()
                     //searchStr probably doesn't need to be passed, since the viewmodel already holds the searchStr
                     
                     
@@ -112,14 +110,57 @@ struct ContentView: View {
                         Image(systemName: "sidebar.right")
                     }
                 }
+                
+
+                
+//                ToolbarItem {
+//                        Picker(selection: $mapViewModel.useTASearch, label: Text("Search Option")) {
+//                            Text("TripAdvisor").tag(true)
+//                            Text("Standard Search").tag(false)
+//                        }
+//                        .pickerStyle(SegmentedPickerStyle())
+//                    }
+                
+                
                 ///TODO: useTASearch Toggle
-                ToolbarItem{
-                    Button {
-                        //visibility_inspector.toggle()
-                    } label: {
-                        Image(systemName: "search")
-                    }
-                }
+//                ToolbarItem{
+//                    Picker(selection: $mapViewModel.useTASearch) {
+//                        Image("Ollie").tag(true)
+//                        Image(systemName: "map").tag(false)
+//                    }
+//                    .pickerStyle(SegmentedPickerStyle())
+//                }
+//                ToolbarItem {
+//                        Picker(selection: $mapViewModel.useTASearch, label: Text("Search Option")) {
+//                            Image("Ollie").resizable().aspectRatio(contentMode: .fit).tag(true)
+//                            Image(systemName: "map").tag(false)
+//                        }
+//                        .pickerStyle(SegmentedPickerStyle())
+//                    }
+                
+//                ToolbarItem {
+//                    Toggle("TripAdvisor Search", systemImage: Image("Ollie"), isOn: $mapViewModel.useTASearch)
+//                        .toggleStyle(ButtonToggleStyle()).foregroundColor(.green)
+//                }
+                
+//                ToolbarItem {
+//                       Toggle(isOn: $mapViewModel.useTASearch) {
+//                           Label("TripAdvisor Search", icon: Image("Ollie"))
+//                           //Label("TripAdvisor Search")
+//                       }
+//                       .tint(.green)
+//                       .toggleStyle(.button)
+//                   }
+//                ToolbarItem {
+//                    Toggle(isOn: $mapViewModel.useTASearch) {
+//                        Label("TripAdvisor Search", image: Image("Ollie")
+//                            .resizable()
+//                                .aspectRatio(contentMode: .fit))
+//                
+//                    }
+//                    .tint(.green)
+//                    .toggleStyle(ButtonToggleStyle())
+//                }
                 
             }
         }
@@ -128,6 +169,15 @@ struct ContentView: View {
             //try? appController.dataModel.modelContext.delete(model: Spot.self)
             //appController.dataModel.fetchData()
 #endif
+        }
+        .toolbar {
+            ToolbarItem {
+                    Picker(selection: $mapViewModel.useTASearch, label: Text("Search Option")) {
+                        Text("TripAdvisor").tag(true)
+                        Text("Standard Search").tag(false)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
         }
     }
     

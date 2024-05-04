@@ -107,7 +107,7 @@ struct MapView: View {
                 
                 mapViewModel.position = .automatic
                 if let localLeg = mapViewModel.selectedSpot {
-                    localLeg.changeRegion(newRegion: mapViewModel.visibleRegion)
+                    //localLeg.changeRegion(newRegion: mapViewModel.visibleRegion)
                     
                 }
             }

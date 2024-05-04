@@ -151,13 +151,7 @@ final class Spot: Identifiable {
     
     ///Make a function to update this instead
     @Transient
-    var TAInfo: TALocation? //{
-//        didSet {
-//            latitude = Double(TAInfo?.latitude ?? "0") ?? 0.0
-//            longitude = Double(TAInfo?.longitude ?? "0") ?? 0.0
-//            
-//        }
-    //}
+    var TAInfo: TALocation?
     
     //This is currently unsafe with the optional
     //MARK: Working to add this functionality to the createSpot function in datamodel

@@ -23,11 +23,9 @@ class MapViewModel {
     var searchResults: [MKMapItem] = []
     
     
-    //var displayedSpots: Set<Spot> = []
     var displayedSpots: [Spot] = []
-    //var displayedSpots: [MKMapItem] = []
     
-    //TODO: Sync these up, didset? what is top Level?
+    //TODO: Sync these up, didset? what is driving?
     var selectedMapItem: MKMapItem?
     var selectedSpot: Spot? {
         didSet {
@@ -48,7 +46,6 @@ class MapViewModel {
     
     
     var useTASearch: Bool = false
-
     
     
     var searchStr: String = ""
@@ -68,7 +65,11 @@ class MapViewModel {
     let manager = CLLocationManager()
     var searchCompleter = MKLocalSearchCompleter()
     
+    var apiManager = APIManager()
+    
     init() {
+        
+        //apiManager = APIManager(mapViewModel: self)
         
     }
         
@@ -88,11 +89,21 @@ class MapViewModel {
     }
     
     
-    func search(for query: String) {
+    func search() {
+        if useTASearch {
+            TASearch()
+        } else {
+            normalSearch()
+        }
+    }
+    
+    
+    
+    func normalSearch() {
         //print("search execute")
         
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query
+        request.naturalLanguageQuery = searchStr
         request.resultTypes = .pointOfInterest
         
         guard let region = visibleRegion else { return }
@@ -109,6 +120,14 @@ class MapViewModel {
     }
     
     
+    func TASearch() {
+        Task{
+            await apiManager.getTASearch(searchStr: searchStr)
+        }
+        
+    }
+    
+    
     
     func apiUpdate() {
         
@@ -122,38 +141,8 @@ class MapViewModel {
     
     
     
+    
+    
 }
 
 
-
-
-
-
-
-
-//
-//struct SearchCompleter: View {
-//    @ObservedObject var locVM: LocationManager
-//    @Environment(\.dismiss) var dismiss
-//
-//    var body: some View {
-//        NavigationView {
-//            VStack {
-//                TextField("Search..", text: $locVM.search)
-//                    .textFieldStyle(.roundedBorder)
-//                List(locVM.searchResults,id: \.self) {res in
-//                    VStack(alignment: .leading, spacing: 0) {
-//                        SearchCompleterLabelView(searchResult: res, locVM: locVM)
-//                    }
-//                    .onTapGesture {
-//                        locVM.name = res.title
-//                        locVM.reverseUpdate()
-//                        dismiss()
-//                    }
-//                }
-//            }.padding()
-//                .navigationTitle(Text("Search For Place"))
-//        }
-//    }
-//}
-//

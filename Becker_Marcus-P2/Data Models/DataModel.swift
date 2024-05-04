@@ -21,9 +21,6 @@ class DataModel {
     var sortSpotsKeyPaths: [KeyPathComparator<Spot>] = [.init(\.name)]
     
     
-    @Transient
-    var selectedSpots: [Spot] = []
-    
     
     init() {
         
